@@ -27,17 +27,17 @@ LETTERS = {
   Z: '--..'
 }.freeze
 
-def decode_char ( morseChar) 
-  letter = ""
-  LETTERS.each do |key,value|
-    letter+=key.to_s if morseChar == value
+def decode_char(char)
+  letter = ''
+  LETTERS.each do |key, value|
+    letter += key.to_s if char == value
   end
   letter
 end
 
 def decode_word(word)
   decoded_word = ''
-  new_word = word.split(' ')
+  new_word = word.split
 
   new_word.each do |char|
     decoded_word += decode_char(char)
@@ -50,12 +50,12 @@ def decode_phrase(phrase)
   words = phrase.split('   ')
 
   words.each do |word|
-    decoded_phrase += decode_word(word) + " "
+    decoded_phrase += "#{decode_word(word)} "
   end
   decoded_phrase
 end
 
 puts decode_char('-..-') # Should return X
-puts decode_word("-- -.--") # Should return MY
-puts decode_phrase("-- -.--   -. .- -- .") # Should return MY NAME
-puts decode_phrase(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
+puts decode_word('-- -.--') # Should return MY
+puts decode_phrase('-- -.--   -. .- -- .') # Should return MY NAME
+puts decode_phrase('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
